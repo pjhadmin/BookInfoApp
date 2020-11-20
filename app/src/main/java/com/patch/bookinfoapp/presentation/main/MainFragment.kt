@@ -2,9 +2,9 @@ package com.patch.bookinfoapp.presentation.main
 
 import android.os.Bundle
 import android.view.View
-import com.patch.bookinfoapp.R
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import com.patch.bookinfoapp.R
 import com.patch.bookinfoapp.common.base.BaseFragment
 import com.patch.bookinfoapp.common.util.hideKeyboard
 import com.patch.bookinfoapp.databinding.FragmentMainBinding
@@ -13,17 +13,19 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
+
 @AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     override val layoutResId: Int = R.layout.fragment_main
     override val viewModel by viewModels<MainViewModel>()
 
-    private val adapter = BookAdapter {
+    private val adapter = BookAdapter { data, sharedImageView ->
         hideKeyboard(binding.root)
         parentFragmentManager.commit(true) {
             addToBackStack(null)
-            add(R.id.container, DetailFragment.newInstance(it))
+            addSharedElement(sharedImageView, sharedImageView.transitionName)
+            replace(R.id.container,  DetailFragment.newInstance(data, sharedImageView.transitionName))
         }
     }
 

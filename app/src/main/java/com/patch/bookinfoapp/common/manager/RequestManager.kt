@@ -1,8 +1,8 @@
 package com.patch.bookinfoapp.common.manager
 
+import android.widget.Toast
 import com.google.gson.Gson
 import com.patch.bookinfoapp.BookInfoApplication
-import com.patch.bookinfoapp.common.extension.toast
 import com.patch.bookinfoapp.common.manager.RequestManager.parseErrorBody
 import com.patch.bookinfoapp.data.entity.ErrorData
 import okhttp3.ResponseBody
@@ -35,8 +35,7 @@ fun <T> Response<T>?.request(
                 listener.onSuccess(response.body())
             } else {
                 val errorData = parseErrorBody(response.errorBody())
-                BookInfoApplication.applicationContext().toast(errorData.message)
-
+                Toast.makeText(BookInfoApplication.applicationContext(), errorData.message, Toast.LENGTH_SHORT).show()
                 listener.onError(parseErrorBody(response.errorBody()))
             }
         } ?: listener.onError(RequestManager.getDefaultErrorBody())
