@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.patch.bookinfoapp.presentation.main.MainViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.patch.bookinfoapp.common.view.SearchLayout
+                android:id="@+id/search_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginBottom="?attr/actionBarSize"
+                android:visibility="@{viewmodel.bookLiveData.size() == 0 ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_img_empty" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_book_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/colorPrimary"
+                android:clipToPadding="false"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:scrollbars="vertical"
+                android:visibility="@{viewmodel.bookLiveData.size() != 0 ? View.VISIBLE : View.GONE, default=gone}"
+                app:submitBookList="@{viewmodel.bookLiveData}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="visible"
+                tools:listitem="@layout/item_book_main" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

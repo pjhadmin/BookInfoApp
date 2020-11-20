@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">BookInfoApp</string>
+
+    <string name="book_search_hint">책 제목을 입력해주세요</string>
+
+    <string name="book_price">%,d 원</string>
+
+    <string name="book_authors">지은이</string>
+    <string name="book_translator">번역</string>
+    <string name="book_contents">줄거리</string>
+    <string name="book_publisher">출판사</string>
+    <string name="book_isbn">ISBN</string>
+    <string name="book_price_str">정상가</string>
+    <string name="book_saleprice">할인가</string>
+    <string name="book_url">상세 URL</string>
 </resources>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">@color/eternal_gray3</color>
+    <color name="colorPrimaryDark">@color/eternal_gray10</color>
+    <color name="colorAccent">#FF000000</color>
+
+    <color name="eternal_black_a50">#80000000</color>
+
+    <color name="eternal_gray3">#F7F7F7</color>
+    <color name="eternal_gray10">#F2F2F2</color>
+    <color name="eternal_gray40">#999999</color>
+    <color name="eternal_gray80">#333333</color>
+
+    <color name="eternal_gray5_a97">#F8F2F2F2</color>
+    <color name="eternal_gray5_a60">#99F2F2F2</color>
+
 </resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.patch.bookinfoapp.domain.entity.BookEntity.Book" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="2dp"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:contentPadding="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp">
+
+            <com.patch.bookinfoapp.common.view.BookImageView
+                android:id="@+id/iv_book_thumbnail"
+                android:layout_width="85dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1.5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:url="@{item.thumbnail}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_book_status"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:background="@color/eternal_black_a50"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:text="@{item.sellingStatus}"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="@{item.sellingStatus.empty ? View.GONE : View.VISIBLE, default=gone}"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_book_thumbnail"
+                app:layout_constraintEnd_toEndOf="@+id/iv_book_thumbnail"
+                app:layout_constraintStart_toStartOf="@+id/iv_book_thumbnail"
+                tools:text="정상판매"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="@{item.title}"
+                android:textColor="@color/eternal_gray80"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_book_thumbnail"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Book Title Here" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_author"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:textColor="@color/eternal_gray80"
+                android:textSize="12sp"
+                app:commaText="@{item.authors}"
+                app:layout_constraintStart_toEndOf="@+id/iv_book_thumbnail"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                tools:text="Author Here" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:text="@{@string/book_price(item.price)}"
+                android:textColor="@color/eternal_gray80"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="@{item.price &lt;= 0 ? View.GONE : View.VISIBLE, default=visible}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_sale_price"
+                tools:text="Price Here"
+                tools:visibility="visible"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_sale_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:text="@{@string/book_price(item.salePrice)}"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="@{item.salePrice &lt;= 0 ? View.GONE : View.VISIBLE, default=gone}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Sale Price Here"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_publisher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text="@{item.publisher}"
+                android:textColor="@color/eternal_gray80"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_book_thumbnail"
+                app:layout_constraintTop_toBottomOf="@+id/tv_author"
+                tools:text="Publisher Here" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_isbn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text="@{item.isbn}"
+                android:textColor="@color/eternal_gray80"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_book_thumbnail"
+                app:layout_constraintTop_toBottomOf="@+id/tv_publisher"
+                tools:text="ISBN Here" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

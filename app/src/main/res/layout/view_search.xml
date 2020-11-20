@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="isInputText"
+            type="boolean" />
+    </data>
+
+    <androidx.appcompat.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/eternal_gray3"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_collapseMode="pin"
+        app:theme="@null"
+        app:title="">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/shape_rec_gray10_r8">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_search_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_search" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:background="@null"
+                android:hint="@string/book_search_hint"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/eternal_gray40"
+                android:textSize="14sp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/iv_search_img"
+                app:layout_constraintRight_toLeftOf="@id/iv_delete_img"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_delete_img"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="4dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/et_search"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_delete" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+</layout>
