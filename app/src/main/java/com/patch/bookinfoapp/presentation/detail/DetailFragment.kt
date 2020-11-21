@@ -1,8 +1,8 @@
 package com.patch.bookinfoapp.presentation.detail
 
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.patch.bookinfoapp.R
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
@@ -14,7 +14,6 @@ import com.patch.bookinfoapp.common.util.roundTo2DecimalPlaces
 import com.patch.bookinfoapp.databinding.FragmentDetailBinding
 import com.patch.bookinfoapp.domain.entity.BookEntity
 import com.patch.bookinfoapp.presentation.MainActivityViewModel
-import com.patch.bookinfoapp.presentation.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlin.math.abs
@@ -47,6 +46,8 @@ class DetailFragment: BaseFragment<FragmentDetailBinding>(), AppBarLayout.OnOffs
                 vLike.toggleAnimation()
                 mainViewModel.bookLikeIndex.setValue(dataIndex)
             }
+
+            urlLinkview.articleColor = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
         }
     }
 

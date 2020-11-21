@@ -106,3 +106,9 @@ dependencies {
     def lottie = '3.4.4'
     implementation "com.airbnb.android:lottie:$lottie"
 }
+
+// Link Preview
+dependencies {
+    def preview = '3.4'
+    implementation "com.nick.mowen.linkpreview:linkpreview:$preview"
+}

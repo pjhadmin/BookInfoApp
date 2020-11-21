@@ -39,8 +39,8 @@
                     android:id="@+id/iv_book_background"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/detail_img" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/kakao_bg" />
 
                 <View
                     android:layout_width="match_parent"
@@ -271,7 +271,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@{@string/book_price(viewmodel.book.salePrice)}"
+                    android:text="@{@string/book_sale_price(viewmodel.book.salePrice, viewmodel.book.salePercentage)}"
                     android:visibility="@{viewmodel.book.salePrice > 0 ? View.VISIBLE : View.GONE}"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="16sp"
@@ -289,16 +289,31 @@
                     android:visibility="@{viewmodel.book.detailUrl.length() == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="Title Here" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/url_detail"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:autoLink="web"
-                    app:visibilityText="@{viewmodel.book.detailUrl}"
-                    android:textColor="@color/eternal_gray80"
-                    android:textSize="16sp"
-                    tools:text="Content Here" />
+                    android:layout_height="wrap_content">
+                    <com.nick.mowen.linkpreview.view.LinkPreview
+                        android:id="@+id/url_linkview"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        app:parsedLink="@{viewmodel.book.detailUrl}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="링크 따라가기"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/holo_blue_dark"
+                        app:layout_constraintTop_toTopOf="@+id/url_linkview"
+                        app:layout_constraintStart_toStartOf="@+id/url_linkview"
+                        app:layout_constraintEnd_toEndOf="@+id/url_linkview"
+                        app:layout_constraintBottom_toBottomOf="@+id/url_linkview"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

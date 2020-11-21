@@ -12,3 +12,8 @@ fun Date.formatToServerDateDefaults(): String{
     val sdf= SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     return sdf.format(this)
 }
+
+fun Int.percentageOnlyPositive(diff: Int): Int {
+    if(this <= 0 || diff <= 0) return 0
+    return (((this - diff).toFloat() / this) * 100L).toInt()
+}

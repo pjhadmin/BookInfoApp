@@ -1,6 +1,7 @@
 package com.patch.bookinfoapp.domain.entity
 
 import android.os.Parcelable
+import com.patch.bookinfoapp.common.util.percentageOnlyPositive
 import com.patch.bookinfoapp.data.entity.BookData
 import kotlinx.android.parcel.Parcelize
 
@@ -25,7 +26,10 @@ data class BookEntity(
         var thumbnail: String,
         var sellingStatus: String,
         var isLike: Boolean = false
-    ) : Parcelable
+    ) : Parcelable {
+        val salePercentage: Int
+            get() = price.percentageOnlyPositive(salePrice)
+    }
 }
 
 object BookDataMapper {
