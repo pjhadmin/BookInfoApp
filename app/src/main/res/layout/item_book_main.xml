@@ -162,10 +162,11 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="15dp"
+                android:background="@drawable/is_like_selector"
+                app:isLike="@{item.isLike}"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_book_thumbnail"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_book_thumbnail"
-                app:srcCompat="@drawable/ic_like_off" />
+                app:layout_constraintTop_toTopOf="@+id/iv_book_thumbnail" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

@@ -1,4 +1,4 @@
-package com.patch.bookinfoapp.common.extension
+package com.patch.bookinfoapp.common.bindadapter
 
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.isVisible
@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.patch.bookinfoapp.common.util.formatToServerDateDefaults
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 @BindingAdapter("commaText")
 fun AppCompatTextView.setCommaText(authors: List<String>?) {

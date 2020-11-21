@@ -314,33 +314,47 @@
             app:navigationIcon="@drawable/ic_back_black"
             app:title="">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_bar_title"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:lineSpacingExtra="0dp"
-                android:lines="1"
-                android:maxLines="1"
-                android:text="@{viewmodel.book.title}"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:text="Date Time Here" />
+                android:layout_gravity="center">
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/v_like"
-                android:layout_width="38dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:scaleType="centerCrop"
-                app:lottie_scale="1"
-                app:lottie_progress="0"
-                app:lottie_fileName="like.json"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_bar_title"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lineSpacingExtra="0dp"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:text="@{viewmodel.book.title}"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/v_like"
+                    tools:text="Date Time Here" />
 
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/v_like"
+                    android:layout_width="38dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="centerCrop"
+                    app:toggleLike="@{viewmodel.book.isLike}"
+                    app:lottie_scale="1"
+                    app:lottie_progress="0"
+                    app:lottie_fileName="like.json"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

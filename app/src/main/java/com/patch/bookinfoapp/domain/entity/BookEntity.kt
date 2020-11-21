@@ -23,7 +23,8 @@ data class BookEntity(
         var price: Int,
         var salePrice: Int,
         var thumbnail: String,
-        var sellingStatus: String
+        var sellingStatus: String,
+        var isLike: Boolean = false
     ) : Parcelable
 }
 

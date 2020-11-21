@@ -30,7 +30,6 @@ class BookSearchUseCase @Inject constructor(
     private val queryString = ConflatedBroadcastChannel<String>()
 
     fun initSearchBookListLiveData(viewModelScope: CoroutineScope): LiveData<PagedList<BookEntity.Book>> {
-
         val config: PagedList.Config = PagedList.Config.Builder()
             .setPageSize(BookRepository.DEFAULT_PAGE_SIZE)
             .setPrefetchDistance(20)
