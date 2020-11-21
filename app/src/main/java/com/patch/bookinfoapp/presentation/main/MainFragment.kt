@@ -50,6 +50,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
             adapter.submitList(viewModel.bookLiveData.value)
             adapter.notifyItemChanged(it)
         })
+
+        binding.searchLayout.setFocus(true)
     }
 
     override fun onPause() {

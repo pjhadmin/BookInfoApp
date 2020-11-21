@@ -9,7 +9,7 @@ import java.util.*
 
 
 @BindingAdapter("commaText")
-fun AppCompatTextView.setCommaText(authors: List<String>?) {
+fun setCommaText(view: AppCompatTextView, authors: List<String>?) {
     authors?.let {
         var authorsStr = ""
         for(author in it) {
@@ -18,30 +18,30 @@ fun AppCompatTextView.setCommaText(authors: List<String>?) {
             else
                 authorsStr += ",$author"
         }
-        isVisible = authorsStr.isNotEmpty()
-        text = authorsStr
-    } ?: let {
-        isVisible = false
+        view.isVisible = authorsStr.isNotEmpty()
+        view.text = authorsStr
+    } ?: view.let {
+        it.isVisible = false
     }
 }
 
 @BindingAdapter("visibilityText")
-fun AppCompatTextView.setVisibilityText(input: String?) {
+fun setVisibilityText(view: AppCompatTextView, input: String?) {
     input?.let {
-        text = it
-        isVisible = it.isNotEmpty()
-    } ?: let {
-        isVisible = false
+        view.text = it
+        view.isVisible = it.isNotEmpty()
+    } ?: view.let {
+        it.isVisible = false
     }
 }
 
 @BindingAdapter("dateTimeText")
-fun AppCompatTextView.setDateTimeText(timeStr: String?) {
+fun setDateTimeText(view: AppCompatTextView, timeStr: String?) {
     timeStr?.let {
         if (it.isNotEmpty()) {
             try{
                 val date = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).parse(it)
-                text = date.formatToServerDateDefaults()
+                view.text = date.formatToServerDateDefaults()
             } catch (e: Exception) { e.printStackTrace() }
         }
     }
