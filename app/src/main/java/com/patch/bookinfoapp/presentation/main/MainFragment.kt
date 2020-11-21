@@ -1,13 +1,11 @@
 package com.patch.bookinfoapp.presentation.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import com.patch.bookinfoapp.R
 import com.patch.bookinfoapp.common.base.BaseFragment
 import com.patch.bookinfoapp.common.util.hideKeyboard
@@ -15,9 +13,6 @@ import com.patch.bookinfoapp.databinding.FragmentMainBinding
 import com.patch.bookinfoapp.presentation.MainActivityViewModel
 import com.patch.bookinfoapp.presentation.detail.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
-
 
 @AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>() {
@@ -33,13 +28,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         }
     }
 
-    @FlowPreview
-    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.searchLayout.setOnTextChangedListener { query ->
-            viewModel.sendQueryString(query.toString())
+            viewModel.searchBookKeyword(query)
         }
 
         binding.rvBookList.adapter = adapter

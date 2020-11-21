@@ -15,7 +15,6 @@ import com.patch.bookinfoapp.databinding.FragmentDetailBinding
 import com.patch.bookinfoapp.domain.entity.BookEntity
 import com.patch.bookinfoapp.presentation.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.FlowPreview
 import kotlin.math.abs
 
 
@@ -33,7 +32,6 @@ class DetailFragment: BaseFragment<FragmentDetailBinding>(), AppBarLayout.OnOffs
         viewModel.setBookDetailData(data)
     }
 
-    @FlowPreview
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
