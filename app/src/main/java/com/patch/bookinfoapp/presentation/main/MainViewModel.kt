@@ -12,6 +12,8 @@ class MainViewModel @ViewModelInject constructor(
 ): ViewModel(){
     var bookLiveData = bookSearchUseCase.initSearchBookListLiveData(viewModelScope)
 
+
+
     fun searchBookKeyword(query: String?) {
         query?.let {
             viewModelScope.launch {

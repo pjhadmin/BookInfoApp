@@ -18,5 +18,5 @@ interface RemoteBookApi {
         @Query("page") page: Int = 1,
         @Query("size") size: Int? = null,
         @Query("target") target: String? = null
-    ): Response<BookData>
+    ): BookData
 }

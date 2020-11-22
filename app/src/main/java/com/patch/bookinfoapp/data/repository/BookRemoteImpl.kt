@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class BookRemoteImpl @Inject constructor(private val api: RemoteBookApi):
     BookDataStore {
-    override suspend fun getBook(query: String, page: Int, size: Int): Response<BookData>
+    override suspend fun getBook(query: String, page: Int, size: Int): BookData
             = api.getBookSearch(query, page = page, size = size)
 }

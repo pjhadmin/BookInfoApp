@@ -10,6 +10,6 @@ class BookRepositoryImpl @Inject constructor(
     private val remote: BookRemoteImpl
 ): BookRepository {
 
-    override suspend fun getBook(query: String, page: Int, size: Int): Response<BookData>
+    override suspend fun getBook(query: String, page: Int, size: Int): BookData
             = remote.getBook(query, page = page, size = size)
 }
