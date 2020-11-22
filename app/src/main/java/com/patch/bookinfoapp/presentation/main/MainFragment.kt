@@ -1,13 +1,17 @@
 package com.patch.bookinfoapp.presentation.main
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.patch.bookinfoapp.BR
 import com.patch.bookinfoapp.R
-import com.patch.bookinfoapp.common.base.BaseFragment
 import com.patch.bookinfoapp.common.util.hideKeyboard
 import com.patch.bookinfoapp.databinding.FragmentMainBinding
 import com.patch.bookinfoapp.presentation.MainActivityViewModel
@@ -15,10 +19,10 @@ import com.patch.bookinfoapp.presentation.detail.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : BaseFragment<FragmentMainBinding>() {
-    override val layoutResId: Int = R.layout.fragment_main
-    override val viewModel by viewModels<MainViewModel>()
+class MainFragment : Fragment() {
+    private val viewModel by viewModels<MainViewModel>()
     private val mainViewModel: MainActivityViewModel by activityViewModels()
+    private lateinit var binding: FragmentMainBinding
 
     private val adapter = BookAdapter { data, index ->
         hideKeyboard(binding.root)
@@ -26,6 +30,19 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
             addToBackStack(null)
             add(R.id.container,  DetailFragment.newInstance(data, index))
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
+        binding.run {
+            lifecycleOwner = viewLifecycleOwner
+            setVariable(BR.viewmodel, viewModel)
+        }
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

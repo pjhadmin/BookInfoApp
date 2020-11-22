@@ -1,17 +1,13 @@
 package com.patch.bookinfoapp.presentation.main
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.view.ViewCompat
 import com.patch.bookinfoapp.R
 import androidx.databinding.DataBindingUtil
-import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.patch.bookinfoapp.common.base.BaseViewHolder
-import com.patch.bookinfoapp.common.view.BookImageView
+import androidx.recyclerview.widget.RecyclerView
+import com.patch.bookinfoapp.BR
 import com.patch.bookinfoapp.databinding.ItemBookMainBinding
 import com.patch.bookinfoapp.domain.entity.BookEntity
 
@@ -39,7 +35,7 @@ class BookAdapter(private val onClick: (BookEntity.Book, Int) -> Unit): PagedLis
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         return BookViewHolder(
-            DataBindingUtil.inflate<ItemBookMainBinding>(
+            DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
                 R.layout.item_book_main,
                 parent,
@@ -58,5 +54,16 @@ class BookAdapter(private val onClick: (BookEntity.Book, Int) -> Unit): PagedLis
         }
     }
 
-    class BookViewHolder(binding: ItemBookMainBinding): BaseViewHolder<BookEntity.Book>(binding)
+    class BookViewHolder(val binding: ItemBookMainBinding): RecyclerView.ViewHolder(binding.root) {
+        fun onBind(item: BookEntity.Book?) {
+            try {
+                with(binding) {
+                    setVariable(BR.item, item)
+                    executePendingBindings()
+                }
+            } catch(e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 }

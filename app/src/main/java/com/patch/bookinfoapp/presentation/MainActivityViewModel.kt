@@ -1,8 +1,8 @@
 package com.patch.bookinfoapp.presentation
 
 import androidx.lifecycle.MutableLiveData
-import com.patch.bookinfoapp.common.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-class MainActivityViewModel: BaseViewModel() {
+class MainActivityViewModel: ViewModel() {
     var bookLikeIndex: MutableLiveData<Int> = MutableLiveData(-1)
 }

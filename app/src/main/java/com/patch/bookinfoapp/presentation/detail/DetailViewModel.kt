@@ -2,10 +2,10 @@ package com.patch.bookinfoapp.presentation.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.patch.bookinfoapp.common.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.patch.bookinfoapp.domain.entity.BookEntity
 
-class DetailViewModel: BaseViewModel(){
+class DetailViewModel: ViewModel(){
 
     private val _book = MutableLiveData<BookEntity.Book>()
     val book: LiveData<BookEntity.Book> get() = _book

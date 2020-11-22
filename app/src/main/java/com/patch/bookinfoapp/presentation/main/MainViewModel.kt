@@ -1,15 +1,15 @@
 package com.patch.bookinfoapp.presentation.main
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.patch.bookinfoapp.common.base.BaseViewModel
 import com.patch.bookinfoapp.domain.usecase.BookSearchUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainViewModel @ViewModelInject constructor(
     private val bookSearchUseCase: BookSearchUseCase
-): BaseViewModel(){
+): ViewModel(){
     var bookLiveData = bookSearchUseCase.initSearchBookListLiveData(viewModelScope)
 
     fun searchBookKeyword(query: String?) {
