@@ -7,18 +7,18 @@ import com.patch.bookinfoapp.common.extension.toggleAnimation
 import com.patch.bookinfoapp.common.view.BookImageView
 
 @BindingAdapter("url")
-fun loadImage(view: BookImageView, url: String?) {
+fun BookImageView.loadImage(url: String?) {
     if (!url.isNullOrEmpty()) {
-        view.load(url)
+        load(url)
     }
 }
 
 @BindingAdapter("isLike")
-fun isLike(view: ImageView, isLike: Boolean) {
-    view.isSelected = isLike
+fun ImageView.isLike(isLike: Boolean) {
+    isSelected = isLike
 }
 
 @BindingAdapter("toggleLike")
-fun toggleAnimation(view: LottieAnimationView, isLike: Boolean) {
-    view.toggleAnimation(isLike, true)
+fun LottieAnimationView.toggleAnimation(isLike: Boolean) {
+    toggleAnimation(isLike, true)
 }
