@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -44,5 +45,11 @@ class BookImageView @JvmOverloads constructor(
                 ): Boolean { return false }
             }).into(binding.ivSucceed)
     }
+}
 
+@BindingAdapter("url")
+fun BookImageView.loadImage(url: String?) {
+    if (!url.isNullOrEmpty()) {
+        load(url)
+    }
 }

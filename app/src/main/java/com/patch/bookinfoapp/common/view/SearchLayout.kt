@@ -24,11 +24,11 @@ class SearchLayout @JvmOverloads constructor(
             override fun afterTextChanged(charSequence: Editable?) {}
             override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
-                charSequence?.let {
-                    binding.ivDeleteImg.isVisible = it.isNotEmpty()
-                    listener?.invoke(it.toString())
-                } ?: run {
+                if (charSequence.isNullOrEmpty()) {
                     binding.ivDeleteImg.isVisible = false
+                } else {
+                    binding.ivDeleteImg.isVisible = charSequence.isNotEmpty()
+                    listener?.invoke(charSequence.toString())
                 }
             }
         })

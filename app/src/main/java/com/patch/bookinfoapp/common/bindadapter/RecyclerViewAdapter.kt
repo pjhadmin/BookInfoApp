@@ -8,9 +8,5 @@ import com.patch.bookinfoapp.presentation.main.BookAdapter
 
 @BindingAdapter("submitBookList")
 fun RecyclerView.setBookList(items: PagedList<BookEntity.Book>?) {
-    items?.let{
-        (adapter as? BookAdapter)?.run {
-            submitList(it)
-        }
-    }
+    (adapter as BookAdapter).submitList(items)
 }
