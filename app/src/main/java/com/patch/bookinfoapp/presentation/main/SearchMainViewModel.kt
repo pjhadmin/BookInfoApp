@@ -7,12 +7,10 @@ import com.patch.bookinfoapp.domain.usecase.BookSearchUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainViewModel @ViewModelInject constructor(
+class SearchMainViewModel @ViewModelInject constructor(
     private val bookSearchUseCase: BookSearchUseCase
 ): ViewModel(){
     var bookLiveData = bookSearchUseCase.initSearchBookListLiveData(viewModelScope)
-
-
 
     fun searchBookKeyword(query: String?) {
         query?.let {

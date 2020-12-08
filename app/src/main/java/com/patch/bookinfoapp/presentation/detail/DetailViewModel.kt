@@ -1,16 +1,20 @@
 package com.patch.bookinfoapp.presentation.detail
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.patch.bookinfoapp.domain.entity.BookEntity
+import com.patch.bookinfoapp.presentation.detail.DetailFragment.Companion.DETAIL_BOOK_ITEM
+import com.patch.bookinfoapp.presentation.detail.DetailFragment.Companion.DETAIL_ITEM_INDEX
 
-class DetailViewModel: ViewModel(){
-    //SavedStateHandle로 값을 대신 전달해보기
-    private val _book = MutableLiveData<BookEntity.Book>()
-    val book: LiveData<BookEntity.Book> get() = _book
+class DetailViewModel constructor(
+    private val savedStateHandle: SavedStateHandle) : ViewModel(){
 
-    fun setBookDetailData(book: BookEntity.Book?) {
-        book?.let { _book.value = it }
+    val book: MutableLiveData<BookEntity.Book> by lazy {
+        MutableLiveData<BookEntity.Book>(savedStateHandle[DETAIL_BOOK_ITEM])
+    }
+
+    val bookIndex: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>(savedStateHandle[DETAIL_ITEM_INDEX])
     }
 }

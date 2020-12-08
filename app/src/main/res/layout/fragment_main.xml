@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.patch.bookinfoapp.presentation.main.MainViewModel" />
+            type="com.patch.bookinfoapp.presentation.main.SearchMainViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

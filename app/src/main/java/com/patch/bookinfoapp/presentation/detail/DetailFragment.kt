@@ -28,19 +28,11 @@ class DetailFragment: Fragment(), AppBarLayout.OnOffsetChangedListener {
     private lateinit var binding: FragmentDetailBinding
     private val mainViewModel: MainActivityViewModel by activityViewModels()
 
-    private val dataIndex: Int? by lazy { arguments?.getInt(DETAIL_ITEM_INDEX) }
-    private val data: BookEntity.Book? by lazy { arguments?.getParcelable(DETAIL_BOOK_ITEM) }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.setBookDetailData(data)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
         binding.run {
             lifecycleOwner = viewLifecycleOwner
@@ -59,7 +51,7 @@ class DetailFragment: Fragment(), AppBarLayout.OnOffsetChangedListener {
 
             vLike.setOnClickListener {
                 vLike.toggleAnimation()
-                mainViewModel.bookLikeIndex.setValue(dataIndex)
+                mainViewModel.bookLikeIndex.setValue(viewModel.bookIndex.value)
             }
 
             urlLinkview.articleColor = ContextCompat.getColor(requireContext(), R.color.colorPrimary)

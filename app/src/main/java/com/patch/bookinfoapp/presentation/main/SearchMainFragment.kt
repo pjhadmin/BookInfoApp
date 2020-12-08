@@ -19,8 +19,8 @@ import com.patch.bookinfoapp.presentation.detail.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : Fragment() {
-    private val viewModel by viewModels<MainViewModel>()
+class SearchMainFragment : Fragment() {
+    private val viewModel by viewModels<SearchMainViewModel>()
     private val mainViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var binding: FragmentMainBinding
 
@@ -70,6 +70,6 @@ class MainFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = SearchMainFragment()
     }
 }
