@@ -5,9 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <import type="android.view.View" />
-
         <variable
             name="viewmodel"
             type="com.patch.bookinfoapp.presentation.detail.DetailViewModel" />
@@ -130,7 +127,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:visibility="@{viewmodel.book.authors == null ? View.GONE : View.VISIBLE}"
+                    app:visibleOrGone="@{viewmodel.book.authors != null}"
                     tools:text="Title Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -152,7 +149,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:visibility="@{viewmodel.book.translators == null || viewmodel.book.translators.size() == 0 ? View.GONE : View.VISIBLE}"
+                    app:visibleOrGone="@{!(viewmodel.book.translators == null || viewmodel.book.translators.size() == 0)}"
                     tools:text="Title Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -173,8 +170,8 @@
                     android:text="@string/book_contents"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:visibility="@{viewmodel.book.contents == null || viewmodel.book.contents.length() == 0 ? View.GONE : View.VISIBLE}"
                     android:textStyle="bold"
+                    app:visibleOrGone="@{!(viewmodel.book.contents == null || viewmodel.book.contents.length() == 0)}"
                     tools:text="Title Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -196,7 +193,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:visibility="@{viewmodel.book.publisher.length() == 0 ? View.GONE : View.VISIBLE}"
+                    app:visibleOrGone="@{viewmodel.book.publisher.length() != 0}"
                     tools:text="Title Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -218,7 +215,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:visibility="@{viewmodel.book.isbn.length() == 0 ? View.GONE : View.VISIBLE}"
+                    app:visibleOrGone="@{viewmodel.book.isbn.length() != 0}"
                     tools:text="Title Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -238,9 +235,9 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/book_price_str"
                     android:textColor="@android:color/black"
-                    android:visibility="@{viewmodel.book.price > 0 ? View.VISIBLE : View.GONE}"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    app:visibleOrGone="@{viewmodel.book.price > 0}"
                     tools:text="Title Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -249,9 +246,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@{@string/book_price(viewmodel.book.price)}"
-                    android:visibility="@{viewmodel.book.price > 0 ? View.VISIBLE : View.GONE}"
                     android:textColor="@color/eternal_gray80"
                     android:textSize="16sp"
+                    app:visibleOrGone="@{viewmodel.book.price > 0}"
                     tools:text="Content Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -263,7 +260,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:visibility="@{viewmodel.book.salePrice > 0 ? View.VISIBLE : View.GONE}"
+                    app:visibleOrGone="@{viewmodel.book.salePrice > 0}"
                     tools:text="Title Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -272,9 +269,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@{@string/book_sale_price(viewmodel.book.salePrice, viewmodel.book.salePercentage)}"
-                    android:visibility="@{viewmodel.book.salePrice > 0 ? View.VISIBLE : View.GONE}"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="16sp"
+                    app:visibleOrGone="@{viewmodel.book.salePrice > 0}"
                     tools:text="Content Here" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -286,7 +283,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:visibility="@{viewmodel.book.detailUrl.length() == 0 ? View.GONE : View.VISIBLE}"
+                    app:visibleOrGone="@{viewmodel.book.detailUrl.length() != 0}"
                     tools:text="Title Here" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout

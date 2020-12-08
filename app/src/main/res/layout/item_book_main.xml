@@ -6,9 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <import type="android.view.View" />
-
         <variable
             name="item"
             type="com.patch.bookinfoapp.domain.entity.BookEntity.Book" />
@@ -51,7 +48,8 @@
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:visibility="@{item.sellingStatus.empty ? View.GONE : View.VISIBLE, default=gone}"
+                android:visibility="gone"
+                app:visibleOrGone="@{!item.sellingStatus.empty}"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_book_thumbnail"
                 app:layout_constraintEnd_toEndOf="@+id/iv_book_thumbnail"
                 app:layout_constraintStart_toStartOf="@+id/iv_book_thumbnail"
@@ -101,7 +99,7 @@
                 android:textColor="@color/eternal_gray80"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:visibility="@{item.price &lt;= 0 ? View.GONE : View.VISIBLE, default=visible}"
+                app:visibleOrGone="@{item.price > 0}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tv_sale_price"
                 tools:text="Price Here"
@@ -119,7 +117,8 @@
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:visibility="@{item.salePrice &lt;= 0 ? View.GONE : View.VISIBLE, default=gone}"
+                android:visibility="gone"
+                app:visibleOrGone="@{item.salePrice > 0}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="Sale Price Here"
