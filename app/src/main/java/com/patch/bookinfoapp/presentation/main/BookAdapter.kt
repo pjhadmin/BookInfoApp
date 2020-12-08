@@ -27,8 +27,7 @@ class BookAdapter(private val onClick: (BookEntity.Book, Int) -> Unit): PagedLis
                 oldItem: BookEntity.Book,
                 newItem: BookEntity.Book
             ): Boolean {
-                return oldItem.isbn == newItem.isbn
-                        && oldItem.contents == newItem.contents
+                return oldItem == newItem
             }
         }
     }

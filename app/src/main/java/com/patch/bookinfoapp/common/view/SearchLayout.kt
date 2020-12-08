@@ -7,6 +7,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
+import com.patch.bookinfoapp.common.bindadapter.gone
+import com.patch.bookinfoapp.common.bindadapter.visibleOrGone
 import com.patch.bookinfoapp.common.util.hideKeyboard
 import com.patch.bookinfoapp.common.util.showKeyboard
 import com.patch.bookinfoapp.databinding.ViewSearchBinding
@@ -25,9 +27,9 @@ class SearchLayout @JvmOverloads constructor(
             override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
                 if (charSequence.isNullOrEmpty()) {
-                    binding.ivDeleteImg.isVisible = false
+                    binding.ivDeleteImg.gone()
                 } else {
-                    binding.ivDeleteImg.isVisible = charSequence.isNotEmpty()
+                    binding.ivDeleteImg.visibleOrGone(charSequence.isNotEmpty())
                     listener?.invoke(charSequence.toString())
                 }
             }

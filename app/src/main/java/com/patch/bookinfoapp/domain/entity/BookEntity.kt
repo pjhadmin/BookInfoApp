@@ -25,11 +25,9 @@ data class BookEntity(
         var salePrice: Int,
         var thumbnail: String,
         var sellingStatus: String,
-        var isLike: Boolean = false
-    ) : Parcelable {
-        val salePercentage: Int
-            get() = price.percentageOnlyPositive(salePrice)
-    }
+        var isLike: Boolean = false,
+        var salePercentage: Int
+    ) : Parcelable
 }
 
 object BookDataMapper {
@@ -53,6 +51,7 @@ object BookDataMapper {
             price = data.price,
             salePrice = data.salePrice,
             thumbnail = data.thumbnail,
-            sellingStatus = data.sellingStatus
+            sellingStatus = data.sellingStatus,
+            salePercentage = data.price.percentageOnlyPositive(data.salePrice)
         )
 }
