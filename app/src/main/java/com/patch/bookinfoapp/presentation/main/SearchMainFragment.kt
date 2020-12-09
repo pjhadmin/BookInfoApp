@@ -12,6 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.patch.bookinfoapp.BR
 import com.patch.bookinfoapp.R
+import com.patch.bookinfoapp.common.corourine.StateCoroutine
+import com.patch.bookinfoapp.common.corourine.StateCoroutineImpl
 import com.patch.bookinfoapp.common.util.hideKeyboard
 import com.patch.bookinfoapp.databinding.FragmentMainBinding
 import com.patch.bookinfoapp.presentation.MainActivityViewModel
@@ -19,7 +21,7 @@ import com.patch.bookinfoapp.presentation.detail.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchMainFragment : Fragment() {
+class SearchMainFragment : Fragment(), StateCoroutine by StateCoroutineImpl() {
     private val viewModel by viewModels<SearchMainViewModel>()
     private val mainViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var binding: FragmentMainBinding
@@ -62,6 +64,10 @@ class SearchMainFragment : Fragment() {
         })
 
         binding.searchLayout.setFocus(true)
+
+        exception.observe(viewLifecycleOwner, {
+            // Error 처리
+        })
     }
 
     override fun onPause() {
